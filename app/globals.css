@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", "Roboto Mono", ui-monospace, monospace;
+
+  --color-paper: #f7f5f0;
+  --color-surface: #ffffff;
+  --color-ink: #191710;
+  --color-ink-soft: #3c3a32;
+  --color-muted: #726d61;
+  --color-line: #e4dfd4;
+  --color-line-strong: #cfc8b9;
+  --color-accent: #da3f12;
+  --color-accent-soft: #fbe9e2;
+  --color-flag: #14532d;
+  --color-flag-soft: #e6f2e8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #ffd9c9;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@utility num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+@utility hairline {
+  border-color: var(--color-line);
+}
+
+/* Thin horizontal scrollbar for the data table */
+.table-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+.table-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.table-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 999px;
+}
+
+.dotted-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(25, 23, 16, 0.12) 1px, transparent 0);
+  background-size: 18px 18px;
+}

@@ -1,0 +1,13 @@
+node_modules/
+.next/
+.npm-cache/
+*.tsbuildinfo
+
+# 抓取缓存（体积较大，可随时重新生成）
+data/raw/
+
+# 本地截图
+shot-*.png
+
+.env*.local
+.DS_Store
