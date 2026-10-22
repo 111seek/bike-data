@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 import RadarChart, { type Benchmark } from "@/components/radar-chart";
 import type { Tire } from "@/lib/types";
+import { tireCnNote } from "@/lib/tire-cn";
 import {
   PRICE_LABEL,
   TIRE_TYPE_LABEL,
@@ -184,6 +185,7 @@ export default function CompareClient({
                   <Link href={`/tires/${t.slug}`} className="line-clamp-2 text-[12.5px] font-semibold leading-snug hover:text-accent">
                     {t.model}
                   </Link>
+                  <div className="mt-0.5 text-[10px] text-muted">{tireCnNote(t)}</div>
                   <div className="mt-2 flex items-baseline justify-between">
                     <span className={cn("num text-[18px] font-bold", toneText[rrTone(t.rr_high)])}>
                       {fmt(t.rr_high)}

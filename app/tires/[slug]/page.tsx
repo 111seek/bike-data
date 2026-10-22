@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { getSimilar, getTire, getTires } from "@/lib/data";
+import { tireCnNote } from "@/lib/tire-cn";
 import {
   BEAD_LABEL,
   PRESSURE_LABEL,
@@ -222,6 +223,7 @@ export default async function TirePage({ params }: { params: Promise<{ slug: str
           <h1 className="mt-2 text-[30px] font-bold leading-tight tracking-[-0.03em] md:text-[38px]">
             {tire.model}
           </h1>
+          <p className="mt-1 text-[12px] text-muted">{tireCnNote(tire)}</p>
 
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <span className="rounded-full bg-ink px-2.5 py-1 text-[10.5px] font-semibold text-paper">

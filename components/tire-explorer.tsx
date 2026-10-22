@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import type { TireRow } from "@/lib/types";
+import { tireCnNote } from "@/lib/tire-cn";
 import {
   PRICE_LABEL,
   TIRE_TYPE_LABEL,
@@ -302,6 +303,7 @@ export default function TireExplorer({ rows, updatedAt }: { rows: TireRow[]; upd
                   <Link href={`/tires/${r.slug}`} className="mt-0.5 block text-[13.5px] font-semibold leading-snug">
                     {r.model}
                   </Link>
+                  <div className="mt-0.5 text-[10px] leading-snug text-muted">{tireCnNote(r)}</div>
                   <div className="mt-2.5 grid grid-cols-4 gap-2">
                     <div>
                       <div className="text-[9.5px] text-muted">滚阻</div>
@@ -411,6 +413,7 @@ export default function TireExplorer({ rows, updatedAt }: { rows: TireRow[]; upd
                     >
                       {r.model}
                     </Link>
+                    <div className="mt-0.5 text-[10px] leading-snug text-muted">{tireCnNote(r)}</div>
                   </td>
                   <td className="num px-2 py-2.5 text-muted">{r.year ?? "—"}</td>
                   <td className="px-2 py-2.5">
