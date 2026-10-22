@@ -47,7 +47,7 @@ npm run scrape
 app/
   page.tsx                 首页：Hero、最快榜单、筛选表格
   tires/[slug]/page.tsx    轮胎详情：规格、测试结果、百分位、近似胎
-  compare/page.tsx         对比页（最多 4 款，自动标注每项最佳）
+  compare/page.tsx         对比页（最多 4 款，六维雷达 + 自动标注每项最佳）
   rankings/page.tsx        滚阻 / 抓地 / 防刺 / 重量榜单
   brands/                  品牌索引与单品牌车型表
   about/page.tsx           测试方法、数据覆盖、来源声明
@@ -63,6 +63,8 @@ scripts/scrape.py          抓取与解析脚本
 data/tires.json            完整数据集
 public/tires/*.jpg         产品图
 ```
+
+![对比页六维雷达](docs/preview-radar.png)
 
 ## 技术栈
 

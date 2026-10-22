@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import CompareClient from "@/components/compare-client";
+import type { Benchmark } from "@/components/radar-chart";
 import { getTires } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -26,6 +27,18 @@ export default async function ComparePage({
     .map((slug) => all.find((t) => t.slug === slug))
     .filter((t): t is NonNullable<typeof t> => Boolean(t));
 
+  const listed = (values: Array<number | null>) =>
+    values.filter((v): v is number => v != null);
+
+  const benchmark: Benchmark = {
+    rr: listed(all.map((t) => t.rr_high)),
+    grip: listed(all.map((t) => t.grip_avg)),
+    puncture: listed(all.map((t) => t.puncture_tread)),
+    weight: listed(all.map((t) => t.weight_measured)),
+    thickness: listed(all.map((t) => t.thickness_tread)),
+    rating: listed(all.map((t) => t.rating)),
+  };
+
   const options = all.map((t) => ({
     slug: t.slug,
     brand: t.brand,
@@ -36,5 +49,5 @@ export default async function ComparePage({
     image: t.image ?? null,
   }));
 
-  return <CompareClient selected={selected} options={options} />;
+  return <CompareClient selected={selected} options={options} benchmark={benchmark} />;
 }

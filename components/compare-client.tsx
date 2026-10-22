@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
+import RadarChart, { type Benchmark } from "@/components/radar-chart";
 import type { Tire } from "@/lib/types";
 import {
   PRICE_LABEL,
@@ -72,9 +73,11 @@ const ROWS: Row[] = [
 export default function CompareClient({
   selected,
   options,
+  benchmark,
 }: {
   selected: Tire[];
   options: Option[];
+  benchmark: Benchmark;
 }) {
   const router = useRouter();
   const slugs = selected.map((t) => t.slug);
@@ -160,6 +163,8 @@ export default function CompareClient({
         </div>
       ) : (
         <>
+          {selected.length >= 2 && <RadarChart tires={selected} benchmark={benchmark} />}
+
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {selected.map((t) => (
               <div key={t.slug} className="relative overflow-hidden rounded-xl border border-line bg-surface">
