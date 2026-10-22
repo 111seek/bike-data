@@ -7,14 +7,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "滚阻库 · 公路车轮胎实测数据库",
+    default: "滚阻库 · 公路车实测数据库",
     template: "%s · 滚阻库",
   },
   description:
-    "182 款公路车轮胎的滚阻、湿地抓地、防刺、厚度与重量实测数据。支持搜索、筛选、排序与最多 4 款轮胎的并排对比。数据来自 Bicycle Rolling Resistance。",
-  keywords: ["公路车轮胎", "滚阻", "滚阻测试", "轮胎对比", "真空胎", "开口胎", "管胎"],
+    "182 款公路车轮胎的滚阻、抓地、防刺数据，以及 49 款公路/砾石车架的车架、前叉重量与价格。支持搜索、筛选、排序与并排对比。",
+  keywords: ["公路车轮胎", "滚阻", "轮胎对比", "车架重量", "车架对比", "公路车架", "砾石车架"],
   openGraph: {
-    title: "滚阻库 · 公路车轮胎实测数据库",
+    title: "滚阻库 · 公路车实测数据库",
     description: "用实测数据挑公路车胎：滚阻、抓地、防刺、重量，一表看完。",
     type: "website",
   },

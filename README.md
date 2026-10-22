@@ -1,7 +1,11 @@
 # 滚阻库 · 公路车轮胎实测数据库
 
-一个对标 [Bicycle Rolling Resistance](https://www.bicyclerollingresistance.com/road-bike-reviews) 的中文数据站。
-抓取公路车列表页与 182 条评测详情，清洗成结构化数据后，提供可搜索、可筛选、可排序、可对比的界面。
+一个中文公路车实测数据站，包含两套数据：
+
+- **轮胎**：182 款公路车轮胎的滚阻、湿地抓地、防刺、尺寸与重量，抓取自 [Bicycle Rolling Resistance](https://www.bicyclerollingresistance.com/road-bike-reviews)。
+- **车架**：49 款公路/砾石车架的车架、前叉、碗组实测重量与参考价格，来自 TOUR Magazin 实验室测试。
+
+两套数据都提供搜索、筛选、排序与并排对比。
 
 ## 快速开始
 
@@ -33,7 +37,23 @@ npm run scrape
 
 抓取按 4 个并发、每次请求间隔约 0.35s 进行，单次全量约 1–2 分钟。站点 `robots.txt` 未禁止评测页。
 
-## 数据说明
+## 车架数据
+
+车架库来自德国 **TOUR Magazin** 的实验室测试，覆盖 49 款 2022–2025 年的公路与砾石车：
+
+```bash
+python3 scripts/build_frames.py   # 从 data/frames_raw.json 生成 frames.json / csv
+```
+
+字段说明：
+
+- **车架/前叉/碗组重量**：TOUR 实测值，车架重量含涂装，不同尺码与配色会有几十克浮动。
+- **参考价**：被测整车的欧元售价，**不是车架组单独售价**。
+- 筛选条件：品牌、类型（竞速/气动/耐力/砾石/全地形/公路越野）、材质、年份。
+
+原始抓取结果在 `data/frames_raw.json`（包含每条数据对应的 TOUR 文章 URL）。
+
+## 轮胎数据说明
 
 - **滚阻**：单胎、28.8 km/h、42.5 kg 负载；列表与默认排序使用「高胎压」档（25–27 mm 用 80 psi，28–30 mm 用 72 psi）。
 - **湿地抓地**：静态摩擦测试，分数 = 摩擦系数 × 100，越高越好。
@@ -47,7 +67,9 @@ npm run scrape
 app/
   page.tsx                 首页：Hero、最快榜单、筛选表格
   tires/[slug]/page.tsx    轮胎详情：规格、测试结果、百分位、近似胎
-  compare/page.tsx         对比页（最多 4 款，六维雷达 + 自动标注每项最佳）
+  compare/page.tsx         轮胎对比页（最多 4 款，六维雷达 + 自动标注每项最佳）
+  frames/page.tsx          车架库：重量 / 价格筛选、排序、勾选对比
+  frames/compare/page.tsx  车架对比（最多 4 款，逐项标出最佳）
   rankings/page.tsx        滚阻 / 抓地 / 防刺 / 重量榜单
   brands/                  品牌索引与单品牌车型表
   about/page.tsx           测试方法、数据覆盖、来源声明
@@ -55,16 +77,21 @@ app/
 components/
   tire-explorer.tsx        客户端表格：搜索、筛选、排序、勾选对比
   compare-client.tsx       对比表与增删轮胎
+  frame-explorer.tsx       车架表格：搜索、类型/材质筛选、排序、勾选对比
+  frame-compare-client.tsx 车架对比表
 lib/
   data.ts                  数据读取、品牌聚合、相似胎推荐
   ui.ts                    中文标签、单位格式化、百分位与配色
   types.ts                 数据类型
 scripts/scrape.py          抓取与解析脚本
-data/tires.json            完整数据集
-public/tires/*.jpg         产品图
+data/tires.json            完整轮胎数据集
+data/frames.json           车架数据集（车架/前叉/碗组重量、价格、来源）
+public/tires/*.jpg         轮胎产品图
 ```
 
 ![对比页六维雷达](docs/preview-radar.png)
+
+![车架库](docs/preview-frames.png)
 
 ## 技术栈
 

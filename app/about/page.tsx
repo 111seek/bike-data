@@ -88,6 +88,20 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-12">
+        <h2 className="text-[20px] font-bold tracking-tight">车架数据</h2>
+        <p className="mt-2 text-[12.5px] leading-6 text-muted">
+          车架库来自德国 <b>TOUR Magazin</b> 的实验室测试：车架、前叉与碗组分别称重，测试条件统一，因此适合横向比较。
+          参考价取被测整车的欧元售价，并非车架组单独售价；车架重量含涂装，不同尺码和配色会有几十克浮动。
+        </p>
+        <Link
+          href="/frames"
+          className="mt-3 inline-flex items-center gap-1 text-[12px] font-medium text-accent hover:underline"
+        >
+          打开车架库 <span aria-hidden>→</span>
+        </Link>
+      </section>
+
+      <section className="mt-12">
         <h2 className="text-[20px] font-bold tracking-tight">技术实现</h2>
         <ul className="mt-3 space-y-2 text-[12.5px] leading-6 text-muted">
           <li>· 抓取脚本：Python + lxml，解析列表页 18 列 + 每条评测页的规格与测试表格，输出 JSON / CSV。</li>

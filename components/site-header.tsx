@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/ui";
 
 const LINKS = [
-  { href: "/", label: "数据库" },
+  { href: "/", label: "轮胎" },
+  { href: "/frames", label: "车架" },
   { href: "/rankings", label: "排行榜" },
   { href: "/brands", label: "品牌" },
   { href: "/compare", label: "对比" },
@@ -45,7 +46,7 @@ export default function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "rounded-full px-2.5 py-2 whitespace-nowrap transition-colors sm:px-3",
+                  "rounded-full px-2 py-2 whitespace-nowrap transition-colors sm:px-3",
                   link.href === "/about" && "hidden sm:block",
                   active
                     ? "bg-ink text-paper"

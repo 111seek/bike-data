@@ -12,11 +12,11 @@ export default function SiteFooter() {
             <span className="text-sm font-bold tracking-tight">滚阻库 · ROLLING DATA</span>
           </div>
           <p className="mt-4 max-w-sm text-[13px] leading-6">
-            一个非官方的公路车轮胎实测数据库。滚阻、湿地抓地、防刺、厚度与重量数据来自
-            Bicycle Rolling Resistance 的公开测试结果，仅作技术演示与选胎参考。
+            一个非官方的公路车实测数据库。轮胎的滚阻、抓地、防刺与重量来自 Bicycle Rolling Resistance；
+            车架的重量与价格来自 TOUR Magazin 的实验室测试。仅作技术演示与选车参考。
           </p>
           <p className="mt-4 text-[12px] text-paper/40">
-            原始测试方法、图表与完整评测版权归 Jarno Bierman / Bicycle Rolling Resistance 所有。
+            原始测试方法、图表与完整评测版权分别归 Bicycle Rolling Resistance 与 TOUR Magazin 所有。
           </p>
         </div>
 
@@ -24,11 +24,13 @@ export default function SiteFooter() {
           <h3 className="text-[11px] font-semibold tracking-[0.18em] text-paper/40">浏览</h3>
           <ul className="mt-4 space-y-2.5 text-[13px]">
             <li><Link className="hover:text-paper" href="/">全部轮胎</Link></li>
+            <li><Link className="hover:text-paper" href="/frames">车架库</Link></li>
             <li><Link className="hover:text-paper" href="/rankings">排行榜</Link></li>
             <li><Link className="hover:text-paper" href="/brands">品牌索引</Link></li>
             <li><Link className="hover:text-paper" href="/compare">轮胎对比</Link></li>
             <li><Link className="hover:text-paper" href="/about">数据与测试方法</Link></li>
-            <li><a className="hover:text-paper" href="/data/tires.csv" download>下载数据 CSV ↓</a></li>
+            <li><a className="hover:text-paper" href="/data/tires.csv" download>下载轮胎 CSV ↓</a></li>
+            <li><a className="hover:text-paper" href="/data/frames.csv" download>下载车架 CSV ↓</a></li>
           </ul>
         </div>
 
@@ -40,6 +42,7 @@ export default function SiteFooter() {
             <li>防刺：总分，越高越好</li>
             <li>厚度：毫米（mm）</li>
             <li>重量：克（g）</li>
+            <li>车架/前叉：TOUR 实测，价格为单位整车价</li>
           </ul>
         </div>
       </div>

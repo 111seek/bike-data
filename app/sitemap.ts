@@ -5,7 +5,7 @@ import { brandSlug, getBrands, getTires } from "@/lib/data";
 const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages = ["", "/rankings", "/brands", "/compare", "/about"].map((path) => ({
+  const staticPages = ["", "/frames", "/frames/compare", "/rankings", "/brands", "/compare", "/about"].map((path) => ({
     url: `${BASE}${path}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,

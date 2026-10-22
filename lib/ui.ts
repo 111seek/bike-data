@@ -196,6 +196,36 @@ export function ratingStars(rating: number | null | undefined): string {
   return "★".repeat(full) + (half ? "☆" : "");
 }
 
+export const FRAME_CATEGORY_LABEL: Record<string, string> = {
+  race: "竞速",
+  aero: "气动",
+  endurance: "耐力",
+  gravel: "砾石",
+  allroad: "全地形",
+  cyclocross: "公路越野",
+};
+
+export const FRAME_MATERIAL_LABEL: Record<string, string> = {
+  carbon: "碳纤维",
+  aluminium: "铝合金",
+  steel: "钢",
+  titanium: "钛合金",
+};
+
+export function euro(n: number | null | undefined): string {
+  if (n == null) return "—";
+  return `€${n.toLocaleString("en-US")}`;
+}
+
+export function frameTotal(frame: { frame_weight: number; fork_weight: number }): number {
+  return frame.frame_weight + frame.fork_weight;
+}
+
+export function pricePerGram(price: number | null, frameWeight: number | null): number | null {
+  if (price == null || frameWeight == null || frameWeight === 0) return null;
+  return Math.round((price / frameWeight) * 10) / 10;
+}
+
 export function slugLabel(slug: string): string {
   return slug.replace(/-/g, " ");
 }

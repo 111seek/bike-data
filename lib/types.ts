@@ -131,3 +131,32 @@ export type TireRow = Pick<
   | "rating"
   | "image"
 > & { tpi: string | null; compound: string | null; etrto: string | null; published: string | null };
+
+export type FrameCategory = "race" | "aero" | "endurance" | "gravel" | "allroad" | "cyclocross";
+export type FrameMaterial = "carbon" | "aluminium" | "steel" | "titanium";
+
+export type Frame = {
+  slug: string;
+  brand: string;
+  model: string;
+  year: number;
+  category: FrameCategory;
+  material: FrameMaterial;
+  frame_weight: number;
+  fork_weight: number;
+  headset_weight: number | null;
+  price: number | null;
+  currency: string;
+  price_basis: "complete" | "frameset";
+  tested_at: string;
+  source_url: string;
+};
+
+export type FrameDataset = {
+  source: string;
+  source_name: string;
+  note: string;
+  generated_at: string;
+  count: number;
+  frames: Frame[];
+};

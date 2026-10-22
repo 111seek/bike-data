@@ -2,11 +2,13 @@ import Link from "next/link";
 
 import TireExplorer from "@/components/tire-explorer";
 import { getRows, getStats } from "@/lib/data";
+import { getFrameStats } from "@/lib/frames";
 import { TIRE_TYPE_LABEL, fmt, fmtInt, rrTone, toneText } from "@/lib/ui";
 
 export default function HomePage() {
   const rows = getRows();
   const stats = getStats();
+  const frameStats = getFrameStats();
   const fastest = rows
     .filter((r) => r.rr_high != null)
     .sort((a, b) => (a.rr_high ?? 99) - (b.rr_high ?? 99))
@@ -135,6 +137,32 @@ export default function HomePage() {
             ))}
           </dl>
         </div>
+      </section>
+
+      {/* frame promo */}
+      <section className="mx-auto mt-8 max-w-[1320px] px-4 md:px-8">
+        <Link
+          href="/frames"
+          className="group flex flex-col justify-between gap-6 rounded-2xl bg-ink px-6 py-6 text-paper transition-colors hover:bg-[#211f17] md:flex-row md:items-center md:px-8"
+        >
+          <div className="flex items-start gap-5">
+            <span className="num grid h-12 w-12 shrink-0 place-items-center rounded-full border border-paper/20 text-[15px] font-semibold text-accent">
+              {frameStats.count}
+            </span>
+            <div>
+              <p className="text-[10.5px] font-semibold uppercase tracking-[0.18em] text-paper/40">
+                New · Frame Lab
+              </p>
+              <h2 className="mt-1 text-[20px] font-bold tracking-tight">车架数据库也上线了</h2>
+              <p className="mt-1 max-w-xl text-[12.5px] leading-6 text-paper/60">
+                {frameStats.count} 款公路与砾石车架的车架、前叉、碗组实测重量与整车参考价，支持并排对比。
+              </p>
+            </div>
+          </div>
+          <span className="inline-flex shrink-0 items-center gap-2 text-[12.5px] font-semibold text-paper group-hover:text-accent">
+            去看车架 <span aria-hidden>→</span>
+          </span>
+        </Link>
       </section>
 
       {/* database */}
