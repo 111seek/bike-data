@@ -78,3 +78,7 @@ sh scripts/install-hooks.sh
 ```
 
 推送日志在 `.git/auto-push.log`。
+
+## 本地访问
+
+生产模式默认监听 `http://localhost:3000`；同一局域网可用 `http://<本机 IP>:3000`。
